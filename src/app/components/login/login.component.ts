@@ -1,0 +1,29 @@
+import { Component, inject, Inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  imports: [FormsModule],
+  standalone: true,
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
+})
+export class LoginComponent {
+  loginObj: any = {
+      email:'',
+      password:''
+  }
+
+  router = inject(Router);
+  onClick(){
+    if(this.loginObj.email == 'admin@gmail.com' && this.loginObj.password == 'password'){
+      this.router.navigateByUrl('/client')
+      localStorage.setItem('empErpUser',this.loginObj.email);
+
+    } else {
+      alert('Wrong credential');
+    }
+  }
+  
+}

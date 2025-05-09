@@ -1,0 +1,126 @@
+<app-alert [alertType]="'Error'" [message]="'Welcome to Project Page'"></app-alert>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                Client Project List - {{firstName()}}
+                <button class="btn btn-danger" (click)="changeSignalFirstName()">Change Signal Firstname</button>
+            </div>
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Project Name</th>
+                                    <th>Client Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Start Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                             <tbody>
+                                @for (item of projectList(); track $index) {
+                                    <tr>
+                                        <td>{{$index}}</td>
+                                        <td>{{item.projectName}}</td>
+                                        <td>{{item.clientName}}</td>
+                                        <td>{{item.empName}}</td>
+                                        <td>{{item.startDate | date:'dd-MM-yyyy'}}</td>
+                                        <td>
+                                            <button class="btn btn-success">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>   
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Client List
+            </div>
+            
+            <div class="card-body">
+                <form [formGroup]="projectForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Project Name</label>
+                            <input type="text" formControlName="projectName" class="form-control">
+                            @if(projectForm.controls['projectName'].touched){
+                            <div class="text-danger">
+                                @if(projectForm.controls['projectName'].errors?.['required']){
+                                    <span>This is Required</span>
+                                }
+                               @if(projectForm.controls['projectName'].errors?.['minlength']){
+                                    <span>Min Char Required</span>
+                               }
+                            </div>
+                            }
+                        </div>
+                        <div class="col-6">
+                            <label for="">Start Date</label>
+                            <input type="date" formControlName="startDate" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Expected Date</label>
+                            <input type="date" formControlName="expectedEndDate" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Client</label>
+                            <!-- <input type="text"  formControlName="clientName"  class="form-control"> -->
+                            <select formControlName="clientName" class="form-control">
+                                <option value="">--client--</option>
+                                @for (item of clientList; track $index) {
+                                    <option [value]="item.companyName">{{item.companyName}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee</label>
+                            <select formControlName="empId" class="form-control">
+                                <option value="">--employee--</option>
+                                @for (item of employeeList; track $index) {
+                                    <option [value]="item.empId">{{item.empName}} - {{item.empCode}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee Code</label>
+                            <input type="text"  formControlName="empCode"  class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee Name</label>
+                            <input type="text"  formControlName="empName"  class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee Designation</label>
+                            <input type="text"  formControlName="empDesignation"  class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee Email ID</label>
+                            <input type="text"  formControlName="empEmailId"  class="form-control">
+                        </div>
+                    </div>
+                <div class="row pt-2">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-secondary" >Reset</button>
+                    </div>
+                    <div class="col-6  text-center">
+                        <button class="btn btn-success" [disabled]="projectForm.invalid" (click)="onSaveProject()">
+                         Save Project    
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
