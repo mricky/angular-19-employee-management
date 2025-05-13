@@ -10,7 +10,7 @@ import { MyButtonComponent } from "../../reusableComponent/my-button/my-button.c
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, UpperCasePipe, DatePipe, JsonPipe, AsyncPipe, AlertComponent, MyButtonComponent],
+  imports: [FormsModule, UpperCasePipe, DatePipe,AlertComponent, MyButtonComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })

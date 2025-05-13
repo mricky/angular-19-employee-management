@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-3">
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-success" (click)="openByDocument()"> Open Modal By Document
+        </button>
+    </div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success" (click)="openByViewChild()"> Open Modal View Child
+        </button>
+    </div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal3"> Open Modal By Bootsrap JS
+        </button>
+    </div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success" (click)="openBySignal()"> Open Modal By Signal
+        </button>
+    </div>
+    <div class="col-3">
+        <button type="button" class="btn btn-success" (click)="openByClassName()"> Open Modal By ClassName
+        </button>
+    </div>
+</div>
+  
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" (click)="closeModalByDocument()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModalByDocument()" data-bs-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<div class="modal" #modal2>
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Modal 2</h4>
+          <button type="button" class="btn-close" (click)="closeByViewChild()" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeByViewChild()" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
+<div class="modal" id="myModal3">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
+
+<div class="modal" [style]="{'display':isModal4Open() ? 'block' : 'none'}" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" (click)="closeBySignal()"></button>
+        </div>
+  
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeBySignal()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
+
+<div [className]="isModal5Open ? 'modal showModal' : 'modal hideModal'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">Modal 5</h4>
+          <button type="button" (click)="closeByClassName()" class="btn-close"></button>
+        </div>
+  
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeByClassName()">Close</button>
+        </div>
+  
+      </div>
+    </div>
+</div>

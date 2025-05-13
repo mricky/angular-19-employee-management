@@ -56,3 +56,20 @@ https://freeapi.miniprojectideas.com/index.html
    - pass data from child to parent using output and emiter
 10. Login 
    - di component folder, ng g c login, ng g c layout
+
+
+===================== Sidebar Layout ===================
+https://getbootstrap.com/docs/5.0/examples/sidebars/#
+1. ng g c subMenuLayout result sub-menu-layout
+2. Modal
+   - Using document.getElementById()
+   - Using ViewChild
+   - Using Bootstrap.js
+   - Using Signal
+   - Dynamic Class
+
+
+3. App Train Booking
+ 1. Aproach difference Variable 
+ 2. Template and ReactiveForm
+ 
